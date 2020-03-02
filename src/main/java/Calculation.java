@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Calculation {
@@ -71,7 +72,7 @@ public class Calculation {
                 }
             } while (equation.contains("-"));
         }
-        System.out.println("Result " + result);
+        System.out.println("Result " + Math.round(result*100.0)/100.0);
         return result;
     }
 

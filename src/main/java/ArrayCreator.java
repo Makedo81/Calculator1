@@ -11,9 +11,10 @@ public class ArrayCreator {
             throw new IllegalStateException();
         }
         list = new ArrayList<>(Arrays.asList(array));
-            for (String element:list) {
+        for (String element:list) {
+            if(!equation.equals("exit"))
                 System.out.println(element);
-            }
+        }
         return list;
     }
 }
