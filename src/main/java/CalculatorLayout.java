@@ -1,115 +1,59 @@
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import java.util.List;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 
 public class CalculatorLayout {
 
-    private ButtonCreator buttonCreator = new ButtonCreator();
-    private TextField textField = buttonCreator.getTextField();
+    private FlowPane flowpane = new FlowPane();
+    private FlowPane flowpane1 = new FlowPane();
+    private FlowPane flowpane2 = new FlowPane();
+    private FlowPane flowpane3 = new FlowPane();
+    private FlowPane flowpane4 = new FlowPane();
+    private static TextField textField = new TextField();
 
-    private Button options[] = new Button[]{
-            new Button("1"),
-            new Button("2"),
-            new Button("3"),
-            new Button("="),
-            new Button("4"),
-            new Button("5"),
-            new Button("6"),
-            new Button("C"),
-            new Button("7"),
-            new Button("8"),
-            new Button("9"),
-            new Button("0"),
-            new Button("+"),
-            new Button("-"),
-            new Button("*"),
-            new Button("/"),
-    };
+    public GridPane createCalculatorDisplay() {
+        ButtonsCreator buttonsCreator = new ButtonsCreator();
+        Button[] options = buttonsCreator.getOptions();
+        buttonsCreator.setButtonsAction();
+        for (int i = 0; i < 4; i++) {
+            options[i].setPrefHeight(100);
+            options[i].setPrefWidth(100);
+            options[i].setStyle("-fx-font-color:#200c30;-fx-font-size:30px;");
+            flowpane.getChildren().add(options[i]);
+        }
+        for (int i = 4; i < 8; i++) {
+            options[i].setPrefHeight(100);
+            options[i].setPrefWidth(100);
+            options[i].setStyle("-fx-font-color:#200c30;-fx-font-size:30px;");
+            flowpane1.getChildren().add(options[i]);
+        }
+        for (int i = 8; i < 12; i++) {
+            options[i].setPrefHeight(100);
+            options[i].setPrefWidth(100);
+            options[i].setStyle("-fx-font-color:#200c30;-fx-font-size:30px;");
+            flowpane2.getChildren().add(options[i]);
+        }
+        for (int i = 12; i < 16; i++) {
+            options[i].setPrefHeight(100);
+            options[i].setPrefWidth(100);
+            options[i].setStyle("-fx-color:#878999;-fx-font-size:23px;");
+            flowpane3.getChildren().add(options[i]);
+        }
 
-    private Button one = options[0];
-    private Button two = options[1];
-    private Button three = options[2];
-    private Button four = options[4];
-    private Button five = options[5];
-    private Button six = options[6];
-    private Button seven = options[8];
-    private Button eight = options[9];
-    private Button nine = options[10];
-    private Button zero = options[11];
-    private Button add = options[12];
-    private Button substract = options[13];
-    private Button multiply = options[14];
-    private Button divide = options[15];
-    private Button result = options[3];
-    private Button delete = options[7];
-
-    public void setButtons() {
-        one.setOnAction(e -> {
-            buttonCreator.getTextField().appendText(one.getText());
-        });
-        two.setOnAction(e -> {
-            textField.appendText(two.getText());
-        });
-        three.setOnAction(e -> {
-            textField.appendText(three.getText());
-        });
-        four.setOnAction(e -> {
-            textField.appendText(four.getText());
-        });
-        five.setOnAction(e -> {
-            buttonCreator.getTextField().appendText(five.getText());
-        });
-        six.setOnAction(e -> {
-            textField.appendText(six.getText());
-        });
-        seven.setOnAction(e -> {
-            textField.appendText(seven.getText());
-        });
-        eight.setOnAction(e -> {
-            textField.appendText(eight.getText());
-        });
-        nine.setOnAction(e -> {
-            textField.appendText(nine.getText());
-        });
-        zero.setOnAction(e -> {
-            textField.appendText(zero.getText());
-        });
-        add.setOnAction(e -> {
-            textField.appendText(add.getText());
-        });
-        substract.setOnAction(e -> {
-            textField.appendText(substract.getText());
-        });
-        multiply.setOnAction(e -> {
-            textField.appendText(multiply.getText());
-        });
-        divide.setOnAction(e -> {
-            textField.appendText(divide.getText());
-        });
-        delete.setOnAction(e -> {
-            textField.clear();
-        });
-        result.setOnAction(e -> {
-            try {
-                ArrayCreator arrayCreator = new ArrayCreator();
-                List<String> list = arrayCreator.createArray(buttonCreator.getTextField().getText());
-                Calculation calculation = new Calculation();
-                double result = calculation.calculateResult(list);
-                buttonCreator.getTextField().clear();
-                buttonCreator.getTextField().setText(String.valueOf(result));
-            } catch (ArithmeticException o) {
-                System.out.println("Some values try to be divide by '0'");
-                textField.clear();
-                textField.setText(" error ");
-            } catch (IllegalStateException o) {
-                System.out.println("Wrong equation pattern.Try new equation");
-                textField.clear();
-                textField.setText(" error ");
-            }
-        });
+        flowpane4.getChildren().add(textField);
+        textField.setPrefSize(400, 100);
+        textField.setStyle("-fx-font-size:30px;");
+        GridPane gridPane = new GridPane();
+        gridPane.add(flowpane4, 1, 1, 1, 1);
+        gridPane.add(flowpane, 1, 2, 1, 1);
+        gridPane.add(flowpane1, 1, 3, 1, 1);
+        gridPane.add(flowpane2, 1, 4, 1, 1);
+        gridPane.add(flowpane3, 1, 5, 1, 1);
+        return gridPane;
     }
 
-    public Button[] getOptions() {
-        return options;
+    public TextField getTextField() {
+        return textField;
     }
 }
