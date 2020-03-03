@@ -4,8 +4,8 @@ import java.util.List;
 
 public class CalculatorLayout {
 
-    private Display display = new Display();
-    private TextField textField = display.getTextField();
+    private ButtonCreator buttonCreator = new ButtonCreator();
+    private TextField textField = buttonCreator.getTextField();
 
     private Button options[] = new Button[]{
             new Button("1"),
@@ -24,12 +24,11 @@ public class CalculatorLayout {
             new Button("-"),
             new Button("*"),
             new Button("/"),
-
     };
 
     private Button one = options[0];
     private Button two = options[1];
-    private Button three = options[4];
+    private Button three = options[2];
     private Button four = options[5];
     private Button five = options[5];
     private Button six = options[6];
@@ -44,10 +43,9 @@ public class CalculatorLayout {
     private Button result = options[3];
     private Button delete = options[7];
 
-    public void setButtonOne(Button options[]) {
-
+    public void setButtonOne() {
         one.setOnAction(e -> {
-            display.getTextField().appendText(one.getText());
+            buttonCreator.getTextField().appendText(one.getText());
         });
         two.setOnAction(e -> {
             textField.appendText(two.getText());
@@ -59,7 +57,7 @@ public class CalculatorLayout {
             textField.appendText(four.getText());
         });
         five.setOnAction(e -> {
-            display.getTextField().appendText(five.getText());
+            buttonCreator.getTextField().appendText(five.getText());
         });
         six.setOnAction(e -> {
             textField.appendText(six.getText());
@@ -94,11 +92,11 @@ public class CalculatorLayout {
         result.setOnAction(e -> {
             try {
                 ArrayCreator arrayCreator = new ArrayCreator();
-                List<String> list = arrayCreator.createArray(display.getTextField().getText());
+                List<String> list = arrayCreator.createArray(buttonCreator.getTextField().getText());
                 Calculation calculation = new Calculation();
                 double result = calculation.calculateResult(list);
-                display.getTextField().clear();
-                display.getTextField().setText(String.valueOf(result));
+                buttonCreator.getTextField().clear();
+                buttonCreator.getTextField().setText(String.valueOf(result));
             } catch (ArithmeticException o) {
                 System.out.println("Some values try to be divide by '0'");
                 textField.clear();

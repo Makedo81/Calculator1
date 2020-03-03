@@ -3,7 +3,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 
-public class Display {
+public class ButtonCreator {
 
     private FlowPane flowpane = new FlowPane();
     private FlowPane flowpane1 = new FlowPane();
@@ -15,7 +15,7 @@ public class Display {
     public GridPane createCalculatorDisplay() {
         CalculatorLayout calculatorLayout = new CalculatorLayout();
         Button[] options = calculatorLayout.getOptions();
-        calculatorLayout.setButtonOne(options);
+        calculatorLayout.setButtonOne();
         for (int i = 0; i < 4; i++) {
             options[i].setPrefHeight(100);
             options[i].setPrefWidth(100);

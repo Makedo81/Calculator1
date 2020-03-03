@@ -5,8 +5,8 @@ import javafx.stage.Stage;
 
 public class Calculator extends Application {
 
-    private Display display = new Display();
-    private GridPane gridPane = display.createCalculatorDisplay();
+    private ButtonCreator buttonCreator = new ButtonCreator();
+    private GridPane gridPane = buttonCreator.createCalculatorDisplay();
 
     @Override
     public void start(Stage primaryStage) {
