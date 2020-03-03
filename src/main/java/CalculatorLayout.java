@@ -29,7 +29,7 @@ public class CalculatorLayout {
     private Button one = options[0];
     private Button two = options[1];
     private Button three = options[2];
-    private Button four = options[5];
+    private Button four = options[4];
     private Button five = options[5];
     private Button six = options[6];
     private Button seven = options[8];
