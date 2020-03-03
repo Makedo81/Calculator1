@@ -15,7 +15,7 @@ public class ButtonCreator {
     public GridPane createCalculatorDisplay() {
         CalculatorLayout calculatorLayout = new CalculatorLayout();
         Button[] options = calculatorLayout.getOptions();
-        calculatorLayout.setButtonOne();
+        calculatorLayout.setButtons();
         for (int i = 0; i < 4; i++) {
             options[i].setPrefHeight(100);
             options[i].setPrefWidth(100);

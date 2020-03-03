@@ -43,7 +43,7 @@ public class CalculatorLayout {
     private Button result = options[3];
     private Button delete = options[7];
 
-    public void setButtonOne() {
+    public void setButtons() {
         one.setOnAction(e -> {
             buttonCreator.getTextField().appendText(one.getText());
         });

@@ -7,7 +7,7 @@ public class ArrayCreator {
     public List<String> createArray(String equation) throws IllegalStateException {
         List<String> list;
         String[] array = equation.split("((?<=\\d)(?=\\D)|(?<=\\D)(?=\\d))");
-        if(array[0].matches("[-+*/]")|| array[array.length-1].matches("[-+*/]")){
+        if(array[0].matches("[-+*/()]")|| array[array.length-1].matches("[-+*/()]")){
             throw new IllegalStateException();
         }
         list = new ArrayList<>(Arrays.asList(array));
