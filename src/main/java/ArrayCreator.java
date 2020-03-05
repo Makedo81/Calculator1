@@ -17,4 +17,11 @@ public class ArrayCreator {
         }
         return list;
     }
+
+    public List<String> createList(String equation) throws IllegalStateException {
+        List<String> list;
+        String[] array = equation.split("((?<=\\d)(?=\\D)|(?<=\\D)(?=\\d))");
+        list = new ArrayList<>(Arrays.asList(array));
+        return list;
+    }
 }
