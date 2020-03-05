@@ -34,7 +34,7 @@ public class ButtonsCreator {
                     textField.clear();
                 });
             }else
-            if (i == 3){
+                if (i == 3){
                 button.setOnAction(e -> {
                     try {
                         ArrayCreator arrayCreator = new ArrayCreator();
