@@ -6,6 +6,7 @@ public class ButtonsCreator {
 
     private CalculatorLayout calculatorLayout = new CalculatorLayout();
     private TextField textField = calculatorLayout.getTextField();
+    private boolean resultCompleted;
 
     private Button[] options = new Button[]{
             new Button("1"),
@@ -52,12 +53,20 @@ public class ButtonsCreator {
                         textField.clear();
                         textField.setText(" error ");
                     }
+                    resultCompleted = true;
                 });
             }
-            else
-            options[i].setOnAction(e -> {
-                setTextField(button);
-            });
+            else {
+                    options[i].setOnAction(e -> {
+                        if (!resultCompleted) {
+                            setTextField(button);
+                        } else {
+                            resultCompleted = false;
+                            textField.clear();
+                            setTextField(button);
+                        }
+                    });
+                }
         }
     }
 
